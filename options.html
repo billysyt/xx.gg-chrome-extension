@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>OP.GG LoL Extension</title>
+		<meta charset="utf-8">
+		<style>
+			body {
+				width: 320px;
+				margin: 0px;
+				padding-bottom: 17px;
+			}
+
+			.switch {
+				float: right;
+				margin-right: 20px;
+				margin-top: -3px;
+				position: relative;
+				display: inline-block;
+				width: 43px;
+				height: 22px;
+			}
+
+			.switch input {
+				opacity: 0;
+				width: 0;
+				height: 0;
+			}
+
+			.slider {
+				position: absolute;
+				cursor: pointer;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				border-radius: 2px;
+				background-color: #f24e4e;
+				-webkit-transition: .2s;
+				transition: .2s;
+			}
+
+			.slider:before {
+				position: absolute;
+				content: "";
+				height: 20px;
+				width: 20px;
+				border-radius: 2px;
+				top: 1px;
+				left: 1px;
+				background-color: white;
+				-webkit-transition: .2s;
+				transition: .2s;
+			}
+
+			input:checked + .slider {
+				background-color: #46bb61;
+			}
+
+			input:focus + .slider {
+				box-shadow: 0 0 1px #46bb61;
+			}
+
+			input:checked + .slider:before {
+				-webkit-transform: translateX(21px);
+				-ms-transform: translateX(21px);
+				transform: translateX(21px);
+			}
+
+			.slider.round {
+				border-radius: 34px;
+			}
+
+			.slider.round:before {
+				border-radius: 50%;
+			}
+
+			#descServer {
+				display: none;
+				margin-top: 20px;
+				width: 265px;
+				text-align: center;
+				font-size: 12px;
+				color: #888;
+			}
+
+			.desc_path {
+				margin-left: 20px;
+				margin-top: 20px;
+				width: 265px;
+				text-align: left;
+			}
+
+			.desc_path_ex {
+				margin-left: 20px;
+				margin-top: 3px;
+				width: 265px;
+				text-align: left;
+				color: #aaa;
+			}
+
+			.input_path {
+				padding-left: 5px;
+				margin-right: 20px;
+				margin-left: 20px;
+				margin-top: 20px;
+				width: 271px;
+				height: 29px;
+			}
+
+			.select_region {
+				margin-top: 4px;
+				margin-left: 20px;
+				width: 180px;
+				height: 29px;
+			}
+
+			.button_save {
+				float: right;
+				border: none;
+				text-decoration: none;
+				margin-top: 4px;
+				width: 65px;
+				height: 29px;
+				margin-right: 20px;
+				border-radius: 2px;
+				background-color: #bcbcbc;
+				color: white;
+				text-align: center;
+			}
+
+			.area_onoff {
+				position: relative;
+				left: 20px;
+				margin: auto;
+				margin-top: 14px;
+			}
+
+			.area_icon {
+				display: none;
+				height: 48px;
+				width: 48px;
+			    margin-right: 6px;
+			}
+
+			.caption {
+				display: block;
+			}
+
+			.button_onoff {
+				width: 48px;
+				height: 48px;
+			}
+
+			.button_onoff:hover {
+				border-radius: 4px;
+				background-color: #f9f9f9;
+			}
+
+			.seperator {
+				margin-top: 16px;
+				width: 100%;
+				height: 1px;
+				background-color: #f1f3f4;
+			}
+
+			.area_bottom {
+				margin-left: 20px;
+				margin-top: 16px;
+			}
+
+			.ext_onoff {
+				display: inline-block;
+				font-weight: bold;
+			}
+
+			#allow {
+				display: none;
+			}
+
+			.area_top {
+				margin-top: 20px;
+				margin-left: 33px;
+			}
+
+			.allow_title {
+				font-size: 20px;
+				font-weight: bold;
+				color: #333333;
+			}
+
+			.fileurl {
+				display: flex;
+				margin-top: 28px;
+				margin-left: 33px;
+				align-items: center;
+			}
+
+			.localhost {
+				display: flex;
+				margin-left: 33px;
+				align-items: center;
+			}
+
+			.seperator_allow {
+				margin-top: 12px;
+				margin-left: 34px;
+				width: 210px;
+				height: 1px;
+				background-color: #e9e9e9;
+				margin-bottom: 10px;
+			}
+
+			#btn_localhost {
+				cursor: pointer;
+				margin-left: auto;
+				margin-right: 34px;
+				width: 40px;
+				height: 18px;
+				border-radius: 2px;
+				border: 1px solid #bcbcbc;
+				background-color: #fff;
+				text-decoration: none;
+			}
+
+			#btn_fileurl {
+				cursor: pointer;
+				margin-left: auto;
+				margin-right: 34px;
+				width: 40px;
+				height: 18px;
+				border-radius: 2px;
+				border: 1px solid #bcbcbc;
+				background-color: #fff;
+				text-decoration: none;
+			}
+
+			#btn_hotfix {
+				cursor: pointer;
+				margin-left: auto;
+				margin-right: 34px;
+				width: 40px;
+				height: 18px;
+				border-radius: 2px;
+				border: 1px solid #bcbcbc;
+				background-color: #fff;
+				text-decoration: none;
+			}
+
+			.league {
+				display: flex;
+				margin-left: 33px;
+				align-items: center;
+			}
+
+			.allow_desc {
+				margin-top: 20px;
+				margin-left: 24px;
+				margin-right: 24px;
+				line-height: 1.5;
+			}
+
+			.path_set {
+				cursor: pointer;
+				color: blue;
+				text-decoration: underline;
+			}
+
+			.hotfix {
+				margin-top: 10px;
+				display: flex;
+				margin-left: 33px;
+				align-items: center;
+			}
+
+			#hotfix_label {
+				margin-left: 33px;
+				margin-right: 33px;
+			}
+
+			a {
+				text-decoration: none;
+			}
+
+			#ifiPage {
+				display: none;
+			}
+
+			.seperator_area {
+				margin-left: -20px;
+				margin-top: 10px;
+				width: 100%;
+				height: 1px;
+				background-color: #f1f3f4;
+			}
+
+			.summonerArea {
+				display: none;
+				margin-top: 20px;
+				margin-left: 20px;
+			}
+
+			.profile_area {
+				position: relative;
+				display: inline-block;
+			}
+
+			.profile_icon {
+				position: relative;
+				border-radius: 5px;
+				width: 48px;
+				height: 48px;
+				z-index: -1;
+			}
+
+			.profile_level {
+				margin-left: 10px;
+				margin-top: -10px;
+				width: 28px;
+				height: 16px;
+				border-radius: 12px;
+				background-color: #202d37;
+				color: white;
+				text-align: center;
+				font-size: 9px;
+				font-family: Roboto;
+			}
+
+			.contents_area {
+				display: inline-block;
+				position: relative;
+				left: 8px;
+				vertical-align: top;
+			}
+
+			.currentSummoner {
+				color: #333;
+				font-size: 15px;
+				font-family: AppleSDGothicNeo;
+				font-weight: bold;
+			}
+
+			.contents_btn {
+				display: inline-block;
+				padding-left: 5px;
+				padding-right: 5px;
+				height: 20px;
+				margin-top: 5px;
+				border-radius: 2px;
+				font-size: 11px;
+				font-family: Roboto;
+				color: #fff;
+				line-height: 1.8;
+				text-align: center;
+			}
+
+			#myPageLabel {
+				background-color: #4c8cff;
+			}
+
+			#ifiLabel {
+				margin-left: 2px;
+				background-color: #7c47e9;
+			}
+
+			.ifilogo {
+				position: relative;
+				top: 5px;
+				left: 5px;
+				width: 20px;
+				height: 20px;
+			}
+
+			.setting_wrapper {
+				width: 100%;
+				text-align: center;
+			}
+
+			.setting_btn {
+				cursor: pointer;
+				display: inline-block;
+				margin-top: 16px;
+				width: 280px;
+				height: 34px;
+				border-radius: 2px;
+				background-color: #4c8cff;
+				color: #fff;
+				font-size: 12px;
+				font-family: AppleSDGothicNeo;
+				line-height: 34px;
+				font-weight: bold;
+			}
+
+			.refresh-rate {
+				margin-top: 16px;
+				text-align: center;
+			}
+
+			#title-refresh-rate {
+				margin-left: 20px;
+				margin-bottom: 10px;
+				font-weight: bold;
+				text-align: left;
+			}
+
+			.btn-rate {
+				display: inline-block;
+				cursor: pointer;
+				width: 70px;
+				height: 28px;
+				line-height: 28px;
+				border: 1px solid #4c8cff;
+				border-radius: 2px;
+				color: #4c8cff;
+				margin-right: 5px;
+				text-align: center;
+			}
+
+			.btn-rate:hover {
+				background-color: #4c8cff;
+				color: #fff;
+			}
+
+			.active {
+				background-color: #4c8cff;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="settings">
+			<div class="summonerArea">
+				<div class="profile_area">
+					<img class="profile_icon" src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon29.jpg" />
+					<div class="profile_level"></div>
+				</div>
+
+				<div class="contents_area">
+					<div class="currentSummoner"></div>
+					<a href="#" target="_blank" id="summonerPage"><div class="contents_btn" id="myPageLabel"></div></a>
+					<a href="#" target="_blank" id="ifiPage"><div class="contents_btn" id="ifiLabel"></div><img src="images/ifi.svg" class="ifilogo" /></a>
+				</div>
+				<div class="seperator_area"></div>
+			</div>
+
+			<div id="pathDesc" class="desc_path"></div>
+			<input type='text' id='riot_path' class='input_path' placeholder="" />
+
+			<select id="region" class="select_region">
+				<option value="detection" selected="selected" id='autoDetect'>Auto Detection</option>
+				<option value="br">Brazil</option>
+				<option value="euw">Europe West</option>
+				<option value="eune">Europe Nordic & East</option>
+				<option value="id">Indonesia</option>
+				<option value="jp">Japan</option>
+				<option value="www">Korea - Not Available</option>
+				<option value="lan">Latin America North</option>
+				<option value="las">Latin America South</option>
+				<option value="na">North America</option>
+				<option value="oce">Oceania</option>
+				<option value="ph">Philippines</option>
+				<option value="ru">Russia</option>
+				<option value="sg">Singapore</option>
+				<option value="tw">Taiwan</option>
+				<option value="th">Thailand</option>
+				<option value="tr">Turkey</option>
+				<option value="vn">Vietnam</option>
+			</select>
+			<button id="save" class="button_save" disabled></button>
+
+			<div class="area_onoff">
+				<img class="area_icon" id="img_multisearch" src='./images/icon_multi_o_none.png' class='button_onoff' />
+				<img class="area_icon" id="img_champion" src='./images/icon_cham_d_none.png' class='button_onoff' />
+				<img class="area_icon" id="img_rune" src='./images/icon_rune_d_none.png' class='button_onoff' />
+				<img class="area_icon" id="img_items" src='./images/icon_item_d_none.png' class='button_onoff' />
+				<img class="area_icon" id="img_ban" src='./images/icon_ban_d_none.png' class='button_onoff' />
+			</div>
+
+			<div class="seperator" style="margin-top: 12px;"></div>
+
+			<div class="area_bottom">
+				<div id="extension" class="ext_onoff"></div>
+
+				<label class="switch">
+					<input id="ext_onoff" type="checkbox" checked>
+					<span class="slider"></span>
+				</label>
+
+				<div id="descServer"></div>
+			</div>
+
+			<div class="seperator" style="margin-top: 16px;"></div>
+
+			<div class="refresh-rate">
+				<div id="title-refresh-rate"></div>
+				<div class="btns-refresh">
+					<div class="btn-rate" id="low">Low</div>
+					<div class="btn-rate" id="medium">Medium</div>
+					<div class="btn-rate active" id="high">High</div>
+				</div>
+			</div>
+
+			<div class="seperator" style="margin-top: 16px;"></div>
+
+			<div class="setting_wrapper">
+				<div class="setting_btn" id="btn_settings">Extension Setting</div>
+			</div>
+		</div>
+
+		<div id="allow">
+			<div class="area_top">
+				<span class="allow_title"></span>
+			</div>
+			<div class="fileurl">
+				<img id="img_fileurl" src="images/icon_check_off.png" />
+				<span id="descFileUrl" style="margin-left: 10px;"></span>
+				<button id="btn_fileurl">Go</button>
+			</div>
+
+			<div class="seperator_allow"></div>
+
+			<div class="localhost">
+				<img id="img_localhost" src="images/icon_check_off.png" />
+				<span id="descLocalhost" style="margin-left: 10px;"></span>
+				<button id="btn_localhost">Go</button>
+			</div>
+
+			<div class="seperator_allow"></div>
+
+			<div class="league">
+				- <span id="descRunLeague" style="margin-left: 10px;"></span>
+			</div>
+
+			<div class="seperator_allow"></div>
+
+			<div class="league">
+				- <span id="descPath" class="path_set" style="margin-left: 10px;"></span>
+			</div>
+
+			<div class="seperator_allow"></div>
+
+			<div id="hotfix_label"></div>
+
+			<div class="hotfix">
+				<img id="img_hotfix" src="images/icon_check_off.png" />
+				<span id="descHotfix" style="margin-left: 10px;"></span>
+				<button id="btn_hotfix">Go</button>
+			</div>
+		</div>
+
+		<script src="options.js"></script>
+	</body>
+</html>

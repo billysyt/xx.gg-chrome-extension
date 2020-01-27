@@ -1,0 +1,110 @@
+{
+	"appName": {
+		"message": "OP.GG Extensión"
+	},
+	"pathDescription" : {
+		"message": "Por favor, ubique la ruta del directorio de League of Legends donde se encuentra su carpeta RADS."
+	},
+	"pathExample": {
+		"message": "sí: D:\\Game\\Riot Games\\League of Legends KR"
+	},
+	"save": {
+		"message": "Guardar"
+	},
+	"on": {
+		"message": "on"
+	},
+	"off": {
+		"message": "off"
+	},
+	"certError": {
+		"message": "Please change \"disabled\" to \"enabled\" where it is highlighted with yellow."
+	},
+	"pathError": {
+		"message": "No se puede encontrar \"League of Legends\". Ruta actual: "
+	},
+	"fileURLError": {
+		"message": "Please allow access to file URL in the following screen."
+	},
+	"appDescription": {
+		"message": "Se te ponen automáticamente la búsqueda múltiple, el análisis del campeón y el ajuste de las Runas para que puedas jugar más cómodo."
+	},
+	"labelMultisearch": {
+		"message": "Búsqueda múltiple"
+	},
+	"labelChampion": {
+		"message": "Campeones"
+	},
+	"labelAutoRune": {
+		"message": "Runas automáticas"
+	},
+	"labelItemRecommend": {
+		"message": "Item Builds"
+	},
+	"labelExtensionOnOff": {
+		"message": "Extensión On/Off"
+	},
+	"labelRunLeague": {
+		"message": "Ejecutar \"League of Legends\""
+	},
+	"labelPath": {
+		"message": "Ruta de instalación"
+	},
+	"descAllow": {
+		"message": "If you are done with localhost allow, please open League of Legends to finish. If you have path problem, click top right 'path setting' to set the path."
+	},
+	"labelAllowFileUrl": {
+		"message": "URL de archivo permitido"
+	},
+	"labelAllowLocalhost": {
+		"message": "Localhost permitido"
+	},
+	"pleaseCheck": {
+		"message": "Comprueba por favor"
+	},
+	"checkSettings": {
+		"message": "¡Comprueba la configuración haciendo clic en el icono de extensión en tu navegador Chrome!"
+	},
+	"pathSet": {
+		"message": "Ruta de instalación"
+	},
+	"autoDetection": {
+		"message": "Detección automática"
+	},
+	"item_start": {
+		"message": "Objetos Iniciales"
+	},
+	"item_recommend": {
+		"message": "Recommended Builds"
+	},
+	"item_boots": {
+		"message": "Botas"
+	},
+	"descServer": {
+		"message": "Disponible en todas las regiones, excepto KR y Garena."
+	},
+	"myPageLabel": {
+		"message": "My Summoner Page"
+	},
+	"ifiLabel": {
+		"message": "Time spent on LoL"
+	},
+	"hotfixDesc": {
+		"message": "*** Due to recent Chrome update (72.0.3626.109), temporarily have to disable the flag below until chrome bug get fixed."
+	},
+	"labelNetworkService": {
+		"message": "NetworkService Disabled"
+	},
+	"performance": {
+		"message": "Performance - Faster refresh rate when High"
+	},
+	"low": {
+		"message": "Low"
+	},
+	"medium": {
+		"message": "Medium"
+	},
+	"high": {
+		"message": "High"
+	}
+}

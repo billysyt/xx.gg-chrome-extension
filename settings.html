@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OP.GG Extension Settings</title>
+	<meta charset="utf-8">
+	<style>
+		body {
+			margin: 0;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		.top_area {
+			width: 100%;
+			height: 50px;
+			border-bottom: 1px solid #e5e5e5;
+		}
+
+		.main_area {
+			width: 100%;
+			height: 340px;
+			background-color: #fff;
+			border-bottom: 1px solid #b6b4b6;
+		}
+
+		.left_bar {
+			display: inline-block;
+			width: 137px;
+			height: 340px;
+			border-right: 1px solid #e5e5e5;
+		}
+
+		.menus {
+			position: absolute;
+			margin-top: 12px;
+			margin-left: 16px;
+		}
+
+		.menu {
+			cursor: pointer;
+			color: #000;
+			font-size: 12px;
+			font-family: Roboto;
+			font-weight: bold;
+			margin-bottom: 12px;
+		}
+
+		.right_content {
+			position: absolute;
+			display: inline-block;
+			margin-top: 12px;
+			margin-left: 16px;
+			font-family: Roboto;
+		}
+
+		.page_title {
+			font-size: 12px;
+			font-weight: bold;
+			color: #333;
+		}
+
+		.page_desc {
+			margin-top: 8px;
+			font-size: 12px;
+			color: #333;
+			line-height: 1.5;
+		}
+
+		.icons_area {
+			margin-top: 16px;
+			width: 296px;
+			height: 64px;
+			border-radius: 4px;
+			background-color: #fbfbfb;
+			border: solid 1px #d8d8d8;
+		}
+
+		.area_icon {
+			width: 48px;
+			height: 48px;
+			margin-right: 4px;
+		}
+
+		.icons_wrapper {
+			margin-top: 8px;
+			margin-left: 11px;
+			margin-right: 8px;
+		}
+
+		.removes_wrapper {
+			margin-left: 8px;
+			margin-top: 16px;
+		}
+
+		.remove {
+			visibility: hidden;
+			cursor: pointer;
+			display: inline-block;
+			width: 48px;
+			height: 20px;
+			border-radius: 2px;
+			border: solid 1px #f24f4e;
+			background-color: #fdfdfd;
+			color: #f24f4e;
+			font-size: 11px;
+			line-height: 19px;
+			text-align: center;
+			margin-right: 2.5px;
+		}
+
+		.adds_wrapper {
+			margin-left: 8px;
+		}
+
+		.add {
+			cursor: pointer;
+			display: inline-block;
+			width: 48px;
+			height: 20px;
+			border-radius: 2px;
+			border: solid 1px #d8d8d8;
+			background-color: #fdfdfd;
+			color: #333;
+			font-size: 11px;
+			line-height: 19px;
+			text-align: center;
+			margin-right: 2.5px;
+		}
+
+		.complete_btn {
+			display: inline-block;
+			margin-top: 14px;
+			margin-left: 200px;
+			cursor: pointer;
+			width: 82px;
+			height: 34px;
+			border-radius: 2px;
+			background-color: #4c8cff;
+			color: #fff;
+			font-size: 12px;
+			line-height: 34px;
+			font-family: AppleSDGothicNeo;
+			text-align: center;
+		}
+
+		.cancel_btn {
+			display: inline-block;
+			margin-top: 14px;
+			margin-left: 12px;
+			cursor: pointer;
+			width: 82px;
+			height: 34px;
+			border-radius: 2px;
+			border: solid 1px #d8d8d8;
+			background-color: #fff;
+			font-size: 12px;
+			line-height: 34px;
+			font-family: AppleSDGothicNeo;
+			text-align: center;
+		}
+
+		.page_guide {
+
+		}
+	</style>
+</head>
+<body>
+<div class="top_area">
+	<img style="margin-top: 16px; margin-left: 16px; width: 81px; height: 20px;" src="./images/img_opgglogo.png" /> <b style="margin-left: 2px; font-size: 9px; color: #333;">Extension</b>
+</div>
+<div class="main_area">
+	<div class="left_bar">
+		<div class="menus">
+			<div id="page_setting" class="menu" style="color: #4c8cff">Setting</div>
+			<div id="page_guide" class="menu">Guide</div>
+			<div id="page_help" class="menu">Help</div>
+		</div>
+	</div>
+	<div class="right_content">
+		<div class="page_setting" id="page1" style="display: block;">
+			<div class="page_title">Quick Menu Setting</div>
+			<div class="page_desc">Try more features by adding quick menus.<br />Play League of Legends more comfortably.</div>
+			<div class="icons_area">
+				<div class="icons_wrapper">
+					<img class="area_icon" id="img_multisearch" src='images/icon-add-o-none.png' />
+					<img class="area_icon" id="img_champion" src='images/icon-add-o-none.png' />
+					<img class="area_icon" id="img_rune" src='images/icon-add-o-none.png' />
+					<img class="area_icon" id="img_items" src='images/icon-add-o-none.png' />
+					<img class="area_icon" id="img_ban" src='images/icon-add-o-none.png' />
+				</div>
+				<div class="removes_wrapper">
+					<div class="remove" id="remove_multisearch">remove</div>
+					<div class="remove" id="remove_champion">remove</div>
+					<div class="remove" id="remove_rune">remove</div>
+					<div class="remove" id="remove_items">remove</div>
+					<div class="remove" id="remove_ban">remove</div>
+				</div>
+				<div class="icons_wrapper">
+					<img class="area_icon" src='images/icon-multisearch-d-none.png' />
+					<img class="area_icon" src='images/icon-champion-d-none.png' />
+					<img class="area_icon" src='images/icon-rune-d-none.png' />
+					<img class="area_icon" src='images/icon-items-d-none.png' />
+					<img class="area_icon" src='images/icon-ban-d-none.png' />
+				</div>
+				<div class="adds_wrapper">
+					<div class="add" id="add_multisearch">ADD</div>
+					<div class="add" id="add_champion">ADD</div>
+					<div class="add" id="add_rune">ADD</div>
+					<div class="add" id="add_items">ADD</div>
+					<div class="add" id="add_ban">ADD</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="page_guide" id="page2" style="display: none;">
+			<div class="page_title">Quick Menu Guide</div>
+			<div class="page_desc">Try more features by adding quick menus.<br />Play League of Legends more comfortably.</div>
+			<div style="margin-left: 0px; margin-top: 16px;">
+				<img class="area_icon" src='images/icon-guide-multi.png' />
+				<img class="area_icon" src='images/icon-guide-champion.png' />
+				<img class="area_icon" src='images/icon-guide-rune.png' />
+				<img class="area_icon" src='images/icon-guide-item.png' />
+				<img class="area_icon" src='images/icon-guide-ban.png' />
+			</div>
+
+			<div style="line-height: 25px;">
+			1. <b>Multisearch</b>: Checkout your teammates before the game starts.<br />
+			2. <b>Champion Build</b>: It will give you a clear guide of a champion you selected.<br />
+			3. <b>Auto Rune Settings</b>: Don't even need to click to set runes, we will do it for you.<br/ >
+			4. <b>Item recommendation</b>: Don't need to hesitate anymore what to buy.<br />
+			5. <b>Ban Pick Helper</b>: Do you want to win? Then just turn on this feature.<br/>
+			</div>
+		</div>
+
+		<div class="page_help" id="page3" style="display: none;">
+			<div class="page_title">Customer Center</div>
+			<div class="page_desc">If you have any errors or concerns, please visit the following<br />link to reoslve the issue.</div>
+			<div style="margin-top: 12px;"><a href='http://www.op.gg/extension/#faq' target='_blank'>https://op.gg/extension/#faq</a></div>
+			<a href='mailto:service+extension@op.gg'><div style="margin-top: 16px; width: 198px; height: 34px; border-radius: 2px; border: solid 1px #d8d8d8;line-height: 34px; text-align: center;">
+				service+extension@op.gg<img style="position: relative; width:20px;height: 14px; top: 3px; left: 5px" src='images/icon-mail.png' />
+			</div></a>
+		</div>
+	</div>
+</div>
+
+<div class="complete_btn" id="complete">Complete</div>
+<div class="cancel_btn" id="cancel">Cancel</div>
+
+<script src="settings.js"></script>
+</body>
+</html>
